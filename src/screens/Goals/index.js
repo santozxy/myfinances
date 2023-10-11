@@ -1,10 +1,13 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-
+import { ScrollView, Text } from 'react-native'
+import { Container } from './styles'
+import Header from '../../components/Header'
 export default function Goals() {
   return (
-    <View>
-      <Text>Login</Text>
-    </View>
+    <Container>
+      <Header/>
+      <ScrollView>
+        
+      </ScrollView>
+    </Container>
   )
 }
