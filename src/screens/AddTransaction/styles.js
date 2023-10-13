@@ -1,6 +1,11 @@
-import styled from "styled-components/native";
+import styled from 'styled-components/native';
 
-export const Container = styled.View`
+export const Container = styled.SafeAreaView`
+    flex:1;
+    background-color: ${props => props.theme.colors.secondary};
+`
+
+export const Header = styled.View`
     height: 110px;
     flex-direction: row;
     align-items: center;
@@ -10,7 +15,7 @@ export const Container = styled.View`
     margin-bottom: 20px;
 `
 
-export const MenuButton = styled.TouchableOpacity`
+export const GoBack = styled.TouchableOpacity`
     height: 70px;
     align-items: center;
     flex-direction: row;
@@ -33,3 +38,5 @@ export const SecondTitle = styled.Text`
     color: ${props => props.theme.colors.primary};
     font-weight: bold;
 `
+
+

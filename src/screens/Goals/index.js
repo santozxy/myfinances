@@ -4,9 +4,9 @@ import Header from '../../components/Header'
 export default function Goals() {
   return (
     <Container>
-      <Header/>
+      <Header title='Metas' />
       <ScrollView>
-        
+
       </ScrollView>
     </Container>
   )

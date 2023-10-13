@@ -19,15 +19,11 @@ export default function Tabs() {
             screenOptions={{
                 tabBarShowLabel: false,
                 tabBarStyle: {
-                    position: 'absolute',
+
                     backgroundColor: secundary,
                     borderTopWidth: 0,
-                    borderRadius: Platform.OS === 'ios' ? 0 : 20,
-                    height: Platform.OS === 'ios' ? 70 : 50,
-                    right: Platform.OS === 'ios' ? 0 : 110,
-                    left: Platform.OS === 'ios' ? 0 : 110,
-                    bottom: Platform.OS === 'ios' ? 10 : 10,
-                    paddingBottom: Platform.OS === 'ios' ? 5 : 0,
+
+                    padding: 0
                 },
             }}>
             <Tab.Screen

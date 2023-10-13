@@ -1,4 +1,4 @@
-import { Container, TitleContainer, FirstTitle, SecondTitle, Input, Button, ButtonText } from './styles';
+import { Container, TitleContainer, FirstTitle, SecondTitle,} from './styles';
 import LottieView from 'lottie-react-native';
 
 export default function SplashScreen({ navigation }) {
