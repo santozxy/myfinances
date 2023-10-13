@@ -69,13 +69,6 @@ export default function Home({ navigation }) {
       data: '29/10/2023',
       type: "Gastos"
     },
-    {
-      id: '8',
-      label: 'Reformas',
-      value: 2500,
-      data: '29/10/2023',
-      type: "Gastos"
-    },
   ]
 
   const expenses = data.filter(item => item.type === 'Gastos')

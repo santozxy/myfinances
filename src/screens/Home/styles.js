@@ -38,7 +38,8 @@ export const AddNewTransaction = styled.TouchableOpacity`
 export const ListContainer = styled.View`
     width: 100%;
     height: 100%;
-    padding: 10px 10px 20px;
+    padding: 10px 10px;
+    flex:1
 `
 
 export const TransactionsList = styled.FlatList`

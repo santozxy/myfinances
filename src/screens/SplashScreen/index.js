@@ -13,7 +13,7 @@ export default function SplashScreen({ navigation }) {
                 source={{ uri: "https://assets2.lottiefiles.com/packages/lf20_vo0zbstd.json" }}
                 autoPlay
                 loop={false}
-                onAnimationFinish={() => { navigation.navigate('Home'); }}
+                onAnimationFinish={() => { navigation.replace('Home'); }}
                 style={{
                     width: 400,
                     height: 320

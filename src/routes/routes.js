@@ -1,17 +1,53 @@
-import { createStackNavigator } from '@react-navigation/stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { MaterialCommunityIcons } from '@expo/vector-icons'
+import { useTheme } from 'styled-components/native';
 
-import SplashScreen from '../screens/SplashScreen'
-import DrawerNavigator from './DrawerNavigator';
-import AddTransaction from '../screens/AddTransaction';
+import StackNavigator from './StackNavigator';
+import Goals from '../screens/Goals';
 
-const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
 
 export default function Routes() {
+    const { colors } = useTheme();
     return (
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="SplashScreen" component={SplashScreen} />
-            <Stack.Screen name="Home" component={DrawerNavigator} />
-            <Stack.Screen name="AddTransaction" component={AddTransaction} />
-        </Stack.Navigator>
+        <Drawer.Navigator screenOptions={{
+            headerShown: false,
+            drawerStyle: {
+                backgroundColor: colors.secondary,
+                paddingTop: 20
+            },
+            drawerActiveBackgroundColor: colors.terciary,
+            drawerActiveTintColor: colors.primary,
+            drawerInactiveTintColor: '#ccc'
+        }}>
+            <Drawer.Screen
+                name="HomeDrawer"
+                options={{
+                    title: 'Início',
+                    drawerIcon: ({ focused, size, color }) => (
+                        <MaterialCommunityIcons
+                            name={focused ? 'home' : 'home-outline'}
+                            size={size}
+                            color={color}
+                        />
+                    )
+                }}
+                component={StackNavigator} />
+
+            <Drawer.Screen
+                name="Goals"
+                options={{
+                    title: 'Caixinhas',
+                    drawerIcon: ({ focused, size, color }) => (
+                        <MaterialCommunityIcons
+                            name={focused ? 'clipboard-list' : 'clipboard-list-outline'}
+                            size={size}
+                            color={color}
+                        />
+                    )
+                }}
+                component={Goals} />
+        </Drawer.Navigator>
     );
 }
+
