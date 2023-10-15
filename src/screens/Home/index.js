@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { ActivityIndicator } from "react-native";
 import { useIsFocused } from "@react-navigation/native";
 import { useTheme } from "styled-components/native";
+import Toast from "react-native-toast-message";
 import {
   Container,
   BalanceContainer,
@@ -18,7 +19,9 @@ import Header from "../../components/Header";
 import Balance from "../../components/Balance";
 import TransactionItem from "../../components/TransactionItem";
 import { getTransactionsSave, deleteTransaction } from "../../utils/storage";
-import Toast from "react-native-toast-message";
+
+import { expensesCalculator, gainsCalculator } from "../../utils/utils";
+import ModalDelete from "../../components/ModalDelete";
 
 export default function Home({ navigation }) {
   const { colors } = useTheme();
@@ -27,6 +30,8 @@ export default function Home({ navigation }) {
   const [loading, setLoading] = useState(true);
   // Estado para armazenar os dados das transações
   const [data, setData] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [id, setId] = useState();
 
   useEffect(() => {
     let isActive = true;
@@ -35,11 +40,11 @@ export default function Home({ navigation }) {
       const result = await getTransactionsSave("@transactions");
       if (isActive) {
         setData(result);
+        setLoading(false);
       }
     }
     if (isActive) {
       getTransactions();
-      setLoading(false); // Marca o carregamento como completo
     }
     // Função de limpeza para evitar vazamentos de memória
     return () => {
@@ -50,62 +55,55 @@ export default function Home({ navigation }) {
 
   // Função para excluir uma transação
   async function deleteItem(id) {
-    await deleteTransaction(id);
-    showToast();
-    const result = await getTransactionsSave("@transactions");
-    setData(result); // Atualiza a lista de transações após a exclusão
-  }
-
-  // Função para exibir um toast de sucesso
-  function showToast() {
+    const transactions = await deleteTransaction(id);
     Toast.show({
       type: "success",
       position: "top",
-      text1: "Aviso",
-      text2: "Deletado com sucesso",
-      visibilitytime: 1000,
+      text1: "Notificação",
+      text2: "Transação criada com sucesso",
+      visibilityTime: 1000,
       autoHide: true,
     });
+    setData(transactions); // Atualiza a lista de transações após a exclusão
+    setShowModal(false);
+  }
+
+  function showModalConfirmation(id) {
+    //Função de mostrar o modal
+    setShowModal(true);
+    setId(id);
   }
 
   // Filtra as transações em despesas e ganhos
-  const expenses = data.filter((item) => item.type === "Gastos");
-  const gains = data.filter((item) => item.type === "Deposito");
-
-  let totalExpenses = 0;
-  // Calcula o total das despesas
-  for (const item of expenses) {
-    const value = parseInt(item.value);
-    if (!isNaN(value)) {
-      totalExpenses += value;
-    }
-  }
-
-  let totalGains = 0;
-
-  // Calcula o total dos ganhos
-  for (const item of gains) {
-    const value = parseInt(item.value);
-    if (!isNaN(value)) {
-      totalGains += value;
-    }
-  }
-
-  // Calcula o saldo total
+  let totalGains = gainsCalculator(data);
+  let totalExpenses = expensesCalculator(data);
   let totalBalance = totalGains - totalExpenses;
+
+  if (loading) {
+    return (
+      <Container>
+        <MessageContainer>
+          <ActivityIndicator size="large" color={colors.primary} />
+          <Message>Carregando...</Message>
+        </MessageContainer>
+      </Container>
+    );
+  }
 
   return (
     <Container>
-      <Toast />
-      <Header title="MyFinances" />
+      <Header />
+      <ModalDelete
+        visible={showModal}
+        cancel={setShowModal}
+        id={id}
+        onDelete={deleteItem}
+      />
       <BalanceContainer>
         <Balance expenses={totalExpenses} balance={totalBalance} />
       </BalanceContainer>
-
       <HeaderTransactions>
         <Title>Transações</Title>
-
-        {/* Navega para a tela de adicionar transação */}
         <AddNewTransaction
           onPress={() => navigation.navigate("AddTransaction")}
         >
@@ -123,10 +121,13 @@ export default function Home({ navigation }) {
           <TransactionsList
             showsVerticalScrollIndicator={false}
             data={data}
-            keyExtractor={(item) => String(item.id)}
+            keyExtractor={(item) => item.id}
             renderItem={({ item }) => (
               // Renderiza um item de transação
-              <TransactionItem item={item} onDelete={deleteItem} />
+              <TransactionItem
+                item={item}
+                modalConfirm={showModalConfirmation}
+              />
             )}
           />
         )}

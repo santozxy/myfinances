@@ -9,11 +9,12 @@ export { primary, secundary, terciary, quaternary, quinternary };
 export const theme = {
   colors: {
     primary: "#318550",
-    secondary: "#1B1B25",
-    terciary: "#15151C",
+    secondary: "#101010",
+    terciary: "#1d1d1d",
+    quaternary: "#363636",
     white: "#fff",
-    black: "#101010",
+    black: "#000",
     red: "#CB2D2D",
-    gray: "#bbb",
+    gray: "#ccc",
   },
 };

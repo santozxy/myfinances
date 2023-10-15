@@ -12,6 +12,8 @@ export default function Routes() {
   return (
     <Drawer.Navigator
       screenOptions={{
+        swipeMinDistance: 10,
+        swipeEdgeWidth: 10,
         headerShown: false,
         drawerStyle: {
           backgroundColor: colors.secondary,
@@ -40,7 +42,7 @@ export default function Routes() {
       <Drawer.Screen
         name="Goals"
         options={{
-          title: "Caixinhas",
+          title: "Metas",
           drawerIcon: ({ focused, size, color }) => (
             <MaterialCommunityIcons
               name={focused ? "clipboard-list" : "clipboard-list-outline"}

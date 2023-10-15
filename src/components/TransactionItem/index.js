@@ -10,12 +10,10 @@ import {
   Type,
   DeleteTransaction,
 } from "./styles";
-import Toast from "react-native-toast-message";
 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { deleteTransaction } from "../../utils/storage";
 
-export default function TransactionItem({ item, onDelete }) {
+export default function TransactionItem({ item, modalConfirm }) {
   const { colors } = useTheme();
   return (
     <Container>
@@ -29,7 +27,7 @@ export default function TransactionItem({ item, onDelete }) {
             <Balance>R$ {item.value}</Balance>
             <Type>{item.type}</Type>
           </Content>
-          <DeleteTransaction>
+          <DeleteTransaction onPress={() => modalConfirm(item.id)}>
             <MaterialCommunityIcons
               size={25}
               color={colors.red}
@@ -43,7 +41,7 @@ export default function TransactionItem({ item, onDelete }) {
             <Expenses>R$ {item.value}</Expenses>
             <Type>{item.type}</Type>
           </Content>
-          <DeleteTransaction onPress={() => onDelete(item.id)}>
+          <DeleteTransaction onPress={() => modalConfirm(item.id)}>
             <MaterialCommunityIcons
               size={25}
               color={colors.red}

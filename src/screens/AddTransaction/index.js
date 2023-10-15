@@ -15,16 +15,16 @@ import {
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-
 import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useTheme } from "styled-components/native";
+import Toast from "react-native-toast-message";
+
 import {
   clearAllData,
   getTransactionsSave,
   createTransaction,
 } from "../../utils/storage";
-import { createNewID } from "../../utils/newId";
-import Toast from "react-native-toast-message";
+import { createNewID } from "../../utils/utils";
 
 // Definição do esquema de validação usando Yup
 const validationSchema = yup.object({
@@ -49,32 +49,15 @@ export default function AddTransaction({ navigation }) {
   async function handleCreate(data) {
     const result = await getTransactionsSave("@transactions");
     const newId = createNewID(result);
-
     // Cópia de data para evitar alterar o objeto original
     const newData = { ...data };
     newData.id = newId;
-    // clearAllData()
-
+    //clearAllData()
     // Criar uma nova transação
+    console.log(newData);
     await createTransaction("@transactions", newData);
-
-    // Limpar os campos do formulário após a criação
-
-    // Exibir uma notificação de sucesso
-    showToast();
   }
 
-  // Função para exibir uma notificação de sucesso
-  function showToast() {
-    Toast.show({
-      type: "success",
-      position: "top",
-      text1: "Notificação",
-      text2: "Transação adicionada com sucesso",
-      visibilitytime: 1000,
-      autoHide: true,
-    });
-  }
   return (
     <Container>
       <Header>
@@ -86,12 +69,12 @@ export default function AddTransaction({ navigation }) {
           <SecondTitle>Transação</SecondTitle>
         </TitleContainer>
       </Header>
-      <Toast />
+
       <Form>
         <InputContainer>
           <Title>
             Título da transação{" "}
-            {errors.name && (
+            {errors.label && (
               <MaterialCommunityIcons
                 size={18}
                 name="alert-box"

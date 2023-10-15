@@ -8,6 +8,7 @@ export const Container = styled.SafeAreaView`
 export const BalanceContainer = styled.View`
   justify-content: center;
   align-items: center;
+  margin: 0 10px;
 `;
 
 export const HeaderTransactions = styled.View`
