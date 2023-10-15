@@ -52,7 +52,7 @@ export const Form = styled.View`
 `;
 
 export const InputContainer = styled.View`
-  margin: 15px 10px;
+  margin: 12px 10px;
 `;
 
 export const Input = styled.TextInput`

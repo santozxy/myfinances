@@ -43,7 +43,6 @@ export default function AddGoals({ navigation, route }) {
           keyboardType="number-pad"
           placeholder="Qual sua meta ?"
           errorStyle={{ color: "red" }}
-          value={goal}
           onChangeText={(value) => setGoal(parseInt(value))}
           placeholderTextColor={colors.gray}
           style={{ color: colors.white }}
