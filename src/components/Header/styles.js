@@ -6,7 +6,7 @@ export const Container = styled.View`
   align-items: center;
   padding-top: 10px;
   padding-left: 14px;
-  background-color: ${(props) => props.theme.colors.terciary};
+  background-color: ${(props) => props.theme.colors.primary};
   margin-bottom: 20px;
 `;
 
@@ -30,6 +30,6 @@ export const FirstTitle = styled.Text`
 
 export const SecondTitle = styled.Text`
   font-size: 24px;
-  color: ${(props) => props.theme.colors.primary};
+  color: ${(props) => props.theme.colors.black};
   font-weight: bold;
 `;

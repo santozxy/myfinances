@@ -7,13 +7,12 @@ export const Container = styled.View`
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  background-color: ${(props) => props.theme.colors.terciary};
   border-radius: 10px;
-  border-bottom-width: 4px;
-  border-color: ${(props) => props.theme.colors.black};
+  border-top-width: 2px;
+  border-bottom-width: 2px;
+  border-color: ${(props) => props.theme.colors.quaternary};
 `;
 export const Content = styled.View`
-  margin: 0 10px;
 `;
 
 export const Title = styled.Text`
@@ -25,6 +24,8 @@ export const Title = styled.Text`
 export const Symbol = styled.Text`
   font-size: 16px;
   color: ${(props) => props.theme.colors.white};
+  justify-content: center;
+  align-items: center;
 `;
 
 export const ToggleBalance = styled.TouchableOpacity``;

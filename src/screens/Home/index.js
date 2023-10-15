@@ -100,7 +100,7 @@ export default function Home({ navigation }) {
         onDelete={deleteItem}
       />
       <BalanceContainer>
-        <Balance expenses={totalExpenses} balance={totalBalance} />
+        <Balance expenses={totalExpenses} gains={totalGains} />
       </BalanceContainer>
       <HeaderTransactions>
         <Title>Transações</Title>

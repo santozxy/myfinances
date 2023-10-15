@@ -12,37 +12,39 @@ import {
 import { MaterialCommunityIcons, AntDesign } from "@expo/vector-icons";
 import { useTheme } from "styled-components/native";
 
-export default function Balance({ balance, expenses }) {
+export default function Balance({ gains, expenses }) {
   const [showBalance, setShowBalance] = useState(true);
   const { colors } = useTheme();
   return (
     <Container>
       <Content>
-        <Title>Saldo atual</Title>
+        <Title>Ganhos</Title>
         {showBalance ? (
           <Symbol>
-            R$ <TextBalance>{balance}</TextBalance>
+            <MaterialCommunityIcons
+              name="arrow-up"
+              color={colors.primary}
+              size={16}
+            />
+            R$ <TextBalance>{gains} </TextBalance>
           </Symbol>
         ) : (
           <Skeleton></Skeleton>
         )}
       </Content>
-      <ToggleBalance onPress={() => setShowBalance(!showBalance)}>
-        {showBalance ? (
-          <MaterialCommunityIcons
-            name="eye-off"
-            size={30}
-            color={colors.primary}
-          />
-        ) : (
-          <AntDesign name="eye" size={30} color={colors.primary} />
-        )}
-      </ToggleBalance>
       <Content>
         <Title>Gastos</Title>
         {showBalance ? (
           <Symbol>
-            R$ <TextExpenses>- {expenses}</TextExpenses>
+            R${" "}
+            <TextExpenses>
+              - {expenses}{" "}
+              <MaterialCommunityIcons
+                name="arrow-down"
+                color={colors.red}
+                size={16}
+              />
+            </TextExpenses>
           </Symbol>
         ) : (
           <Skeleton></Skeleton>
