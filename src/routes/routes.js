@@ -2,8 +2,8 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useTheme } from "styled-components/native";
 
-import StackNavigator from "./StackNavigator";
-import Goals from "../screens/Goals";
+import StackHomeNavigator from "./StackHomeNavigator";
+import StackGoalsNavigator from "./StackGoalsNavigator";
 
 const Drawer = createDrawerNavigator();
 
@@ -36,11 +36,11 @@ export default function Routes() {
             />
           ),
         }}
-        component={StackNavigator}
+        component={StackHomeNavigator}
       />
 
       <Drawer.Screen
-        name="Goals"
+        name="GoalsDrawer"
         options={{
           title: "Metas",
           drawerIcon: ({ focused, size, color }) => (
@@ -51,7 +51,7 @@ export default function Routes() {
             />
           ),
         }}
-        component={Goals}
+        component={StackGoalsNavigator}
       />
     </Drawer.Navigator>
   );
