@@ -10,14 +10,13 @@ import {
   MenuButton,
 } from "./styles";
 import { useNavigation } from "@react-navigation/native";
+import { useTheme } from "styled-components/native";
 
 export default function Header({ title }) {
   const navigation = useNavigation();
+  const { colors } = useTheme();
   return (
     <Container>
-      <MenuButton onPress={() => navigation.openDrawer()}>
-        <Feather name="menu" size={36} color={"#fff"} />
-      </MenuButton>
       <TitleContainer>
         <FirstTitle>My</FirstTitle>
         <SecondTitle>Finances</SecondTitle>

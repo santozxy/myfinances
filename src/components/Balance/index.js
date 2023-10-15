@@ -1,13 +1,13 @@
 import { useState } from "react";
 import {
   Container,
+  Row,
   Title,
+  ContainerBalance,
   Content,
   Symbol,
-  TextBalance,
+  TextGains,
   TextExpenses,
-  ToggleBalance,
-  Skeleton,
 } from "./styles";
 import { MaterialCommunityIcons, AntDesign } from "@expo/vector-icons";
 import { useTheme } from "styled-components/native";
@@ -15,26 +15,27 @@ import { useTheme } from "styled-components/native";
 export default function Balance({ gains, expenses }) {
   const [showBalance, setShowBalance] = useState(true);
   const { colors } = useTheme();
+  let balance = gains - expenses;
   return (
     <Container>
-      <Content>
-        <Title>Ganhos</Title>
-        {showBalance ? (
+      <ContainerBalance>
+        <Title>Saldo</Title>
+        <Title>{balance}</Title>
+      </ContainerBalance>
+      <Row>
+        <Content>
+          <Title>Ganhos</Title>
           <Symbol>
             <MaterialCommunityIcons
               name="arrow-up"
               color={colors.primary}
               size={16}
             />
-            R$ <TextBalance>{gains} </TextBalance>
+            R$ <TextGains>{gains} </TextGains>
           </Symbol>
-        ) : (
-          <Skeleton></Skeleton>
-        )}
-      </Content>
-      <Content>
-        <Title>Gastos</Title>
-        {showBalance ? (
+        </Content>
+        <Content>
+          <Title>Gastos</Title>
           <Symbol>
             R${" "}
             <TextExpenses>
@@ -46,10 +47,8 @@ export default function Balance({ gains, expenses }) {
               />
             </TextExpenses>
           </Symbol>
-        ) : (
-          <Skeleton></Skeleton>
-        )}
-      </Content>
+        </Content>
+      </Row>
     </Container>
   );
 }

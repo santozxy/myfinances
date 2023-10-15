@@ -1,58 +1,92 @@
-import { createDrawerNavigator } from "@react-navigation/drawer";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { useTheme } from "styled-components/native";
+import { Platform, View } from "react-native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import {
+  Ionicons,
+  Feather,
+  FontAwesome,
+  MaterialCommunityIcons,
+} from "@expo/vector-icons";
 
+import SplashScreen from "../screens/SplashScreen";
 import StackHomeNavigator from "./StackHomeNavigator";
 import StackGoalsNavigator from "./StackGoalsNavigator";
+import { useTheme } from "styled-components/native";
 
-const Drawer = createDrawerNavigator();
+const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
 
 export default function Routes() {
   const { colors } = useTheme();
+  function Tabs() {
+    return (
+      <Tab.Navigator
+        initialRouteName={"Home"}
+        screenOptions={{
+          tabBarShowLabel: false,
+          tabBarStyle: {
+            position: "absolute",
+            backgroundColor: colors.secondary,
+          },
+        }}
+      >
+        <Tab.Screen
+          name="Início"
+          component={StackHomeNavigator}
+          options={{
+            headerShown: false,
+            tabBarIcon: ({ color, size, focused }) => {
+              if (focused) {
+                return (
+                  <Ionicons
+                    name="home"
+                    size={Platform.OS === "ios" ? 38 : 30}
+                    color={colors.primary}
+                  />
+                );
+              }
+              return (
+                <Ionicons
+                  name="home-outline"
+                  size={Platform.OS === "ios" ? 38 : 30}
+                  color={color}
+                />
+              );
+            },
+          }}
+        />
+        <Tab.Screen
+          name="Metas"
+          component={StackGoalsNavigator}
+          options={{
+            headerShown: false,
+            tabBarIcon: ({ color, size, focused }) => {
+              if (focused) {
+                return (
+                  <MaterialCommunityIcons
+                    name="clipboard-list"
+                    size={Platform.OS === "ios" ? 38 : 30}
+                    color={colors.primary}
+                  />
+                );
+              }
+              return (
+                <MaterialCommunityIcons
+                  name="clipboard-list-outline"
+                  size={Platform.OS === "ios" ? 38 : 30}
+                  color={color}
+                />
+              );
+            },
+          }}
+        />
+      </Tab.Navigator>
+    );
+  }
   return (
-    <Drawer.Navigator
-      screenOptions={{
-        swipeMinDistance: 10,
-        swipeEdgeWidth: 10,
-        headerShown: false,
-        drawerStyle: {
-          backgroundColor: colors.secondary,
-          paddingTop: 20,
-        },
-        drawerActiveBackgroundColor: colors.terciary,
-        drawerActiveTintColor: colors.primary,
-        drawerInactiveTintColor: "#ccc",
-      }}
-    >
-      <Drawer.Screen
-        name="HomeDrawer"
-        options={{
-          title: "Início",
-          drawerIcon: ({ focused, size, color }) => (
-            <MaterialCommunityIcons
-              name={focused ? "home" : "home-outline"}
-              size={size}
-              color={color}
-            />
-          ),
-        }}
-        component={StackHomeNavigator}
-      />
-
-      <Drawer.Screen
-        name="GoalsDrawer"
-        options={{
-          title: "Metas",
-          drawerIcon: ({ focused, size, color }) => (
-            <MaterialCommunityIcons
-              name={focused ? "clipboard-list" : "clipboard-list-outline"}
-              size={size}
-              color={color}
-            />
-          ),
-        }}
-        component={StackGoalsNavigator}
-      />
-    </Drawer.Navigator>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="SplashScreen" component={SplashScreen} />
+      <Stack.Screen name="Home" component={Tabs} />
+    </Stack.Navigator>
   );
 }

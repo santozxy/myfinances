@@ -5,6 +5,7 @@ import { useTheme } from "styled-components/native";
 import Toast from "react-native-toast-message";
 import {
   Container,
+  Content,
   BalanceContainer,
   HeaderTransactions,
   Title,
@@ -102,36 +103,38 @@ export default function Home({ navigation }) {
       <BalanceContainer>
         <Balance expenses={totalExpenses} gains={totalGains} />
       </BalanceContainer>
-      <HeaderTransactions>
-        <Title>Transações</Title>
-        <AddNewTransaction
-          onPress={() => navigation.navigate("AddTransaction")}
-        >
-          <Title>Adicionar</Title>
-        </AddNewTransaction>
-      </HeaderTransactions>
+      <Content>
+        <HeaderTransactions>
+          <Title>Transações</Title>
+          <AddNewTransaction
+            onPress={() => navigation.navigate("AddTransaction")}
+          >
+            <Title>Adicionar</Title>
+          </AddNewTransaction>
+        </HeaderTransactions>
 
-      <ListContainer>
-        {/* Verifica se não há transações a serem exibidas */}
-        {data.length === 0 ? (
-          <MessageContainer>
-            <Message>Você não possui nenhuma transação</Message>
-          </MessageContainer>
-        ) : (
-          <TransactionsList
-            showsVerticalScrollIndicator={false}
-            data={data}
-            keyExtractor={(item) => item.id}
-            renderItem={({ item }) => (
-              // Renderiza um item de transação
-              <TransactionItem
-                item={item}
-                modalConfirm={showModalConfirmation}
-              />
-            )}
-          />
-        )}
-      </ListContainer>
+        <ListContainer>
+          {/* Verifica se não há transações a serem exibidas */}
+          {data.length === 0 ? (
+            <MessageContainer>
+              <Message>Você não possui nenhuma transação</Message>
+            </MessageContainer>
+          ) : (
+            <TransactionsList
+              showsVerticalScrollIndicator={false}
+              data={data}
+              keyExtractor={(item) => item.id}
+              renderItem={({ item }) => (
+                // Renderiza um item de transação
+                <TransactionItem
+                  item={item}
+                  modalConfirm={showModalConfirmation}
+                />
+              )}
+            />
+          )}
+        </ListContainer>
+      </Content>
     </Container>
   );
 }

@@ -5,10 +5,17 @@ export const Container = styled.SafeAreaView`
   background-color: ${(props) => props.theme.colors.secondary};
 `;
 
+export const Content = styled.View`
+  flex: 1;
+  background-color: ${(props) => props.theme.colors.secondary};
+  border-top-right-radius: 25px;
+  border-top-left-radius: 25px;
+`;
+
 export const BalanceContainer = styled.View`
   justify-content: center;
   align-items: center;
-  margin: 0 10px;
+  margin: 0 10px 25px;
 `;
 
 export const HeaderTransactions = styled.View`

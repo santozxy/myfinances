@@ -4,7 +4,6 @@ export const Container = styled.View`
   display: flex;
   flex-direction: row;
   width: 100%;
-  background-color: ${(props) => props.theme.colors.terciary};
   justify-content: space-between;
   align-items: center;
   margin: 8px 0;

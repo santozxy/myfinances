@@ -1,13 +1,15 @@
 import styled from "styled-components/native";
 
 export const Container = styled.View`
-  height: 90px;
+  height: 50px;
   flex-direction: row;
   align-items: center;
   padding-top: 10px;
   padding-left: 14px;
-  background-color: ${(props) => props.theme.colors.primary};
+  background-color: ${(props) => props.theme.colors.secondary};
   margin-bottom: 20px;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const MenuButton = styled.TouchableOpacity`
@@ -30,6 +32,6 @@ export const FirstTitle = styled.Text`
 
 export const SecondTitle = styled.Text`
   font-size: 24px;
-  color: ${(props) => props.theme.colors.black};
+  color: ${(props) => props.theme.colors.primary};
   font-weight: bold;
 `;
