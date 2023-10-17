@@ -11,7 +11,7 @@ export const ModalContainer = styled.View`
 
 export const ModalContent = styled.View`
   width: 90%;
-  background-color: ${(props) => props.theme.colors.terciary};
+  background-color: ${(props) => props.theme.colors.primary};
   padding: 20px;
   border-radius: 8px;
 `;
@@ -31,7 +31,7 @@ export const ModalButtonContainer = styled.View`
 
 export const ButtonConfirm = styled.TouchableOpacity`
   padding: 10px 20px;
-  background-color: ${(props) => props.theme.colors.primary};
+  background-color: ${(props) => props.theme.colors.green};
   border-radius: 5px;
 `;
 

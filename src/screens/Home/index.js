@@ -8,22 +8,20 @@ import {
   Content,
   BalanceContainer,
   HeaderTransactions,
-  TitleButton,
   Title,
-  AddNewTransaction,
   ListContainer,
   MessageContainer,
   Message,
   TransactionsList,
 } from "./styles";
 
-import Header from "../../components/Header";
 import Balance from "../../components/Balance";
 import TransactionItem from "../../components/TransactionItem";
 import { getTransactionsSave, deleteTransaction } from "../../utils/storage";
 
 import { expensesCalculator, gainsCalculator } from "../../utils/utils";
 import ModalDelete from "../../components/ModalDelete";
+import ButtonAdd from "../../components/ButtonAbsolute";
 
 export default function Home({ navigation }) {
   const { colors } = useTheme();
@@ -93,12 +91,7 @@ export default function Home({ navigation }) {
       </BalanceContainer>
       <Content>
         <HeaderTransactions>
-          <Title>Transações</Title>
-          <AddNewTransaction
-            onPress={() => navigation.navigate("AddTransaction")}
-          >
-            <TitleButton>Adicionar</TitleButton>
-          </AddNewTransaction>
+          <Title>Suas Transações</Title>
         </HeaderTransactions>
 
         <ListContainer>
@@ -128,6 +121,7 @@ export default function Home({ navigation }) {
           )}
         </ListContainer>
       </Content>
+      <ButtonAdd route={"AddTransaction"} />
     </Container>
   );
 }

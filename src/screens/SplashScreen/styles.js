@@ -24,6 +24,6 @@ export const FirstTitle = styled.Text`
 
 export const SecondTitle = styled.Text`
   font-size: 32px;
-  color: ${(props) => props.theme.colors.primary};
+  color: ${(props) => props.theme.colors.green};
   font-weight: bold;
 `;

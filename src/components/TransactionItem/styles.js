@@ -9,8 +9,8 @@ export const Container = styled.View`
   margin: 8px 0;
   border-radius: 8px;
   padding: 10px;
-  border-bottom-width: 1px;
-  border-color: ${(props) => props.theme.colors.primary};
+  border-bottom-width: 4px;
+  border-color: ${(props) => props.theme.colors.gray};
 `;
 
 export const Content = styled.View`
@@ -50,9 +50,5 @@ export const Type = styled.Text`
 `;
 
 export const DeleteTransaction = styled.TouchableOpacity`
-  padding: 8px;
-  border-left-width: 1px;
-  border-color: #fff2;
   align-items: center;
-  justify-content: center;
 `;

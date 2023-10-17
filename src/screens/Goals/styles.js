@@ -5,6 +5,18 @@ export const Container = styled.SafeAreaView`
   background-color: ${(props) => props.theme.colors.secondary};
 `;
 
+export const BudgetContainer = styled.View`
+  flex: 1;
+`;
+
+export const Content = styled.View`
+  flex: 1;
+  background-color: ${(props) => props.theme.colors.primary};
+  border-top-right-radius: 25px;
+  border-top-left-radius: 25px;
+`;
+
+
 export const Title = styled.Text`
   font-size: 18px;
   color: ${(props) => props.theme.colors.white};
@@ -15,11 +27,12 @@ export const MessageContainer = styled.View`
   flex: 1;
   gap: 20px;
   align-items: center;
+  justify-content: center;
 `;
 
 export const Message = styled.Text`
   font-size: 18px;
-  color: ${(props) => props.theme.colors.white};
+  color: ${(props) => props.theme.colors.black};
   font-weight: bold;
 `;
 
@@ -29,12 +42,11 @@ export const Button = styled.TouchableOpacity`
   justify-content: center;
   height: 40px;
   border-radius: 10px;
-  background-color: ${(props) => props.theme.colors.primary};
+  background-color: ${(props) => props.theme.colors.secondary};
 `;
 
 export const ListContainer = styled.ScrollView`
   flex: 1;
-  background-color: ${(props) => props.theme.colors.secondary};
 `;
 
 export const TransactionsList = styled.FlatList`

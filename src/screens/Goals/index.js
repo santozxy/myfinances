@@ -1,9 +1,9 @@
 import { ScrollView } from "react-native";
 import LottieView from "lottie-react-native";
-
-import Header from "../../components/Header";
 import {
   Container,
+  BudgetContainer,
+  Content,
   Title,
   Message,
   MessageContainer,
@@ -17,25 +17,27 @@ export default function Goals() {
   const data = [];
   return (
     <Container>
-      <Header />
-      {data.length === 0 ? (
-        <MessageContainer>
-          <Message>Você não possui nenhuma meta</Message>
-          <LottieView
-            source={require("../../../assets/notGoalsAnimation.json")}
-            autoPlay
-            loop={false}
-            style={{ height: 100 }}
-          />
-          <Button onPress={() => navigation.navigate("SelectTypeGoal")}>
-            <Title>Adicionar meta</Title>
-          </Button>
-        </MessageContainer>
-      ) : (
-        <ListContainer>
-          <TransactionsList showsVerticalScrollIndicator={false} />
-        </ListContainer>
-      )}
+      <BudgetContainer></BudgetContainer>
+      <Content>
+        {data.length === 0 ? (
+          <MessageContainer>
+            <Message>Você não possui nenhuma meta</Message>
+            <LottieView
+              source={require("../../../assets/notGoalsAnimation.json")}
+              autoPlay
+              loop={false}
+              style={{ height: 100 }}
+            />
+            <Button onPress={() => navigation.navigate("SelectTypeGoal")}>
+              <Title>Adicionar meta</Title>
+            </Button>
+          </MessageContainer>
+        ) : (
+          <ListContainer>
+            <TransactionsList showsVerticalScrollIndicator={false} />
+          </ListContainer>
+        )}
+      </Content>
     </Container>
   );
 }

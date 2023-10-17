@@ -2,7 +2,7 @@ import styled from "styled-components/native";
 
 export const Container = styled.SafeAreaView`
   flex: 1;
-  background-color: ${(props) => props.theme.colors.secondary};
+  background-color: ${(props) => props.theme.colors.primary};
 `;
 
 export const Header = styled.View`
@@ -11,8 +11,7 @@ export const Header = styled.View`
   align-items: center;
   padding-top: 10px;
   padding-left: 14px;
-  background-color: ${(props) => props.theme.colors.terciary};
- 
+  background-color: ${(props) => props.theme.colors.secondary};
 `;
 
 export const GoBack = styled.TouchableOpacity`
@@ -42,13 +41,12 @@ export const SecondTitle = styled.Text`
 export const Title = styled.Text`
   font-size: 20px;
   color: ${(props) => props.theme.colors.white};
-  font-weight: bold;  
+  font-weight: bold;
 `;
-
 
 export const Goal = styled.Text`
   font-size: 28px;
-  color: ${(props) => props.theme.colors.white};
+  color: ${(props) => props.theme.colors.black};
   font-weight: bold;
   padding-left: 15px;
   padding-top: 10px;
@@ -68,13 +66,11 @@ export const GoalContainer = styled.View`
   margin-top: 40px;
 `;
 
-export const InputContainer = styled.View`
-
-`
+export const InputContainer = styled.View``;
 
 export const Button = styled.TouchableOpacity`
   width: 90%;
-  background-color: ${(props) => props.theme.colors.primary};
+  background-color: ${(props) => props.theme.colors.secondary};
   height: 35px;
   border-radius: 8px;
   justify-content: center;

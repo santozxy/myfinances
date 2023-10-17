@@ -7,7 +7,7 @@ import {
   Content,
   Icon,
   Labels,
-  Gains,
+  ValueBalance,
   ValueLabel,
 } from "./styles";
 import { MaterialCommunityIcons, AntDesign } from "@expo/vector-icons";
@@ -20,7 +20,7 @@ export default function Balance({ gains, expenses }) {
   return (
     <Container>
       <ContainerBalance>
-        <ValueLabel>{balance},00</ValueLabel>
+        <ValueBalance>R$ {balance.toFixed(2)}</ValueBalance>
         <TitleLabel>Saldo atual</TitleLabel>
       </ContainerBalance>
 
@@ -30,7 +30,7 @@ export default function Balance({ gains, expenses }) {
             <MaterialCommunityIcons
               name="arrow-up"
               color={colors.green}
-              size={16}
+              size={20}
             />
           </Icon>
           <Labels>
@@ -43,7 +43,7 @@ export default function Balance({ gains, expenses }) {
             <MaterialCommunityIcons
               name="arrow-down"
               color={colors.red}
-              size={16}
+              size={20}
             />
           </Icon>
           <Labels>

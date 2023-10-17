@@ -2,7 +2,7 @@ import styled from "styled-components/native";
 
 export const Container = styled.SafeAreaView`
   flex: 1;
-  background-color: ${(props) => props.theme.colors.secondary};
+  background-color: ${(props) => props.theme.colors.primary};
 `;
 
 export const Header = styled.View`
@@ -11,8 +11,9 @@ export const Header = styled.View`
   align-items: center;
   padding-top: 10px;
   padding-left: 14px;
-  background-color: ${(props) => props.theme.colors.terciary};
   margin-bottom: 20px;
+  border-bottom-width: 1px;
+  background-color: ${(props) => props.theme.colors.secondary};
 `;
 
 export const GoBack = styled.TouchableOpacity`
@@ -29,21 +30,15 @@ export const TitleContainer = styled.View`
   padding-left: 18px;
 `;
 
-export const FirstTitle = styled.Text`
+export const HeaderTitle = styled.Text`
   font-size: 24px;
   color: ${(props) => props.theme.colors.white};
-  font-weight: bold;
-`;
-
-export const SecondTitle = styled.Text`
-  font-size: 24px;
-  color: ${(props) => props.theme.colors.primary};
   font-weight: bold;
 `;
 
 export const Title = styled.Text`
   font-size: 16px;
-  color: ${(props) => props.theme.colors.white};
+  color: ${(props) => props.theme.colors.secondary};
   font-weight: bold;
 `;
 
@@ -56,21 +51,28 @@ export const InputContainer = styled.View`
 `;
 
 export const Input = styled.TextInput`
-  background-color: #f5f5f5;
-  color: #000;
+  background-color: ${(props) => props.theme.colors.white};
+  color: #fff;
   padding: 8px;
   width: 100%;
   height: 35px;
   border-radius: 8px;
+  margin-top: 3px;
 `;
 
 export const Button = styled.TouchableOpacity`
   width: 80%;
-  background-color: ${(props) => props.theme.colors.primary};
+  background-color: ${(props) => props.theme.colors.secondary};
   height: 35px;
   border-radius: 8px;
   justify-content: center;
   align-items: center;
   align-self: center;
   margin-top: 15px;
+`;
+
+export const TitleButton = styled.Text`
+  font-size: 16px;
+  color: ${(props) => props.theme.colors.white};
+  font-weight: bold;
 `;

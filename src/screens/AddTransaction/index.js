@@ -3,13 +3,13 @@ import {
   GoBack,
   Header,
   TitleContainer,
-  FirstTitle,
-  SecondTitle,
+  HeaderTitle,
   Form,
   InputContainer,
   Input,
   Button,
   Title,
+  TitleButton,
 } from "./styles";
 
 import { useForm, Controller } from "react-hook-form";
@@ -62,11 +62,10 @@ export default function AddTransaction({ navigation }) {
     <Container>
       <Header>
         <GoBack onPress={() => navigation.goBack()}>
-          <Feather name="arrow-left" size={36} color={colors.white} />
+          <Feather name="arrow-left" size={36} color={colors.primary} />
         </GoBack>
         <TitleContainer>
-          <FirstTitle>Nova </FirstTitle>
-          <SecondTitle>Transação</SecondTitle>
+          <HeaderTitle>Nova Transação</HeaderTitle>
         </TitleContainer>
       </Header>
 
@@ -88,8 +87,8 @@ export default function AddTransaction({ navigation }) {
             render={({ field: { onChange, onBlur, value } }) => (
               <Input
                 style={{
-                  borderWidth: errors.label && 1,
-                  borderColor: errors.label && colors.red,
+                  borderWidth: 1,
+                  borderColor: errors.label ? colors.red : colors.black,
                 }}
                 value={value}
                 onChangeText={onChange}
@@ -118,8 +117,8 @@ export default function AddTransaction({ navigation }) {
             render={({ field: { onChange, onBlur, value } }) => (
               <Input
                 style={{
-                  borderWidth: errors.value && 1,
-                  borderColor: colors.red,
+                  borderWidth: 1,
+                  borderColor: errors.value ? colors.red : colors.black,
                 }}
                 value={value}
                 onChangeText={onChange}
@@ -148,8 +147,8 @@ export default function AddTransaction({ navigation }) {
             render={({ field: { onChange, onBlur, value } }) => (
               <Input
                 style={{
-                  borderWidth: errors.data && 1,
-                  borderColor: colors.red,
+                  borderWidth: 1,
+                  borderColor: errors.data ? colors.red : colors.black,
                 }}
                 value={value}
                 onChangeText={onChange}
@@ -178,8 +177,8 @@ export default function AddTransaction({ navigation }) {
             render={({ field: { onChange, onBlur, value } }) => (
               <Input
                 style={{
-                  borderWidth: errors.type && 1,
-                  borderColor: colors.red,
+                  borderWidth: 1,
+                  borderColor: errors.type ? colors.red : colors.black,
                 }}
                 value={value}
                 onChangeText={onChange}
@@ -192,7 +191,7 @@ export default function AddTransaction({ navigation }) {
         </InputContainer>
 
         <Button onPress={handleSubmit(handleCreate)}>
-          <Title>Adicionar transação</Title>
+          <TitleButton>Adicionar transação</TitleButton>
         </Button>
       </Form>
     </Container>

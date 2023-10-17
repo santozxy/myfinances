@@ -1,4 +1,4 @@
-import { Platform } from "react-native";
+import { Platform, View } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {
@@ -22,24 +22,13 @@ export default function Routes() {
     return (
       <Tab.Navigator
         screenOptions={{
-          
+          tabBarShowLabel: false,
           tabBarStyle: {
-            position: "absolute",
-            bottom:  Platform.OS === 'ios' ? "6%":"3%",
-            left: "10%",
-            right: "10%",
-            paddingTop: 8,
-            paddingBottom: 8,
-            borderRadius: 15,
-            height: '8.5%',
-            backgroundColor: colors.primary,
-            justifyContent: "center",
-            alignItems: "center",
+            backgroundColor: colors.secondary,
             borderTopWidth: 0,
-            elevation:0,
+            borderWidth: 0,
+            elevation: 0,
           },
-          tabBarActiveTintColor: colors.white,
-          tabBarInactiveTintColor:  colors.gray,
         }}
       >
         <Tab.Screen
@@ -53,7 +42,7 @@ export default function Routes() {
                   <Ionicons
                     name="home"
                     size={Platform.OS === "ios" ? 38 : 30}
-                    color={colors.white}
+                    color={colors.primary}
                   />
                 );
               }
@@ -78,7 +67,7 @@ export default function Routes() {
                   <MaterialCommunityIcons
                     name="clipboard-list"
                     size={Platform.OS === "ios" ? 38 : 30}
-                    color={colors.white}
+                    color={colors.primary}
                   />
                 );
               }
@@ -97,6 +86,7 @@ export default function Routes() {
   }
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="SplashScreen" component={SplashScreen} />
       <Stack.Screen name="Home" component={Tabs} />
     </Stack.Navigator>
   );
