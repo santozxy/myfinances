@@ -5,7 +5,7 @@ export const AddNewTransaction = styled.TouchableOpacity`
   bottom: 10px;
   right: 10px;
   width: 50px;
-  background-color: ${(props) => props.theme.colors.secondary};
+  background-color: ${(props) => props.theme.colors.primary};
   height: 50px;
   border-radius: 50px;
   justify-content: center;

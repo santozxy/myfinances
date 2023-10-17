@@ -6,7 +6,7 @@ export const Container = styled.SafeAreaView`
   flex: 1;
   gap: 30px;
   height: 100%;
-  background-color: ${(props) => props.theme.colors.secondary};
+  background-color: ${(props) => props.theme.colors.primary};
   justify-content: center;
   align-items: center;
 `;

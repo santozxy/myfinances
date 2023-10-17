@@ -2,7 +2,7 @@ import styled from "styled-components/native";
 
 export const Container = styled.SafeAreaView`
   flex: 1;
-  background-color: ${(props) => props.theme.colors.primary};
+  background-color: ${(props) => props.theme.colors.secondary};
 `;
 
 export const Header = styled.View`
@@ -11,7 +11,7 @@ export const Header = styled.View`
   align-items: center;
   padding-top: 10px;
   padding-left: 14px;
-  background-color: ${(props) => props.theme.colors.secondary};
+  background-color: ${(props) => props.theme.colors.primary};
 `;
 
 export const GoBack = styled.TouchableOpacity`

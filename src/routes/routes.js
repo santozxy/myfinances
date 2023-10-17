@@ -24,7 +24,7 @@ export default function Routes() {
         screenOptions={{
           tabBarShowLabel: false,
           tabBarStyle: {
-            backgroundColor: colors.secondary,
+            backgroundColor: colors.primary,
             borderTopWidth: 0,
             borderWidth: 0,
             elevation: 0,
@@ -42,7 +42,7 @@ export default function Routes() {
                   <Ionicons
                     name="home"
                     size={Platform.OS === "ios" ? 38 : 30}
-                    color={colors.primary}
+                    color={colors.white}
                   />
                 );
               }
@@ -67,7 +67,7 @@ export default function Routes() {
                   <MaterialCommunityIcons
                     name="clipboard-list"
                     size={Platform.OS === "ios" ? 38 : 30}
-                    color={colors.primary}
+                    color={colors.white}
                   />
                 );
               }
