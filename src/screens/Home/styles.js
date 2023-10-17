@@ -2,7 +2,7 @@ import styled from "styled-components/native";
 
 export const Container = styled.SafeAreaView`
   flex: 1;
-  background-color: ${(props) => props.theme.colors.secondary};
+  background-color: ${(props) => props.theme.colors.primary};
 `;
 
 export const Content = styled.View`
@@ -23,16 +23,22 @@ export const HeaderTransactions = styled.View`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: ${(props) => props.theme.colors.secondary};
   margin-top: 30px;
   margin-bottom: 5px;
 `;
 
 export const Title = styled.Text`
   font-size: 18px;
+  color: ${(props) => props.theme.colors.black};
+  font-weight: bold;
+`;
+
+export const TitleButton = styled.Text`
+  font-size: 18px;
   color: ${(props) => props.theme.colors.white};
   font-weight: bold;
 `;
+
 
 export const MessageContainer = styled.View`
   height: 50%;

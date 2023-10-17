@@ -8,6 +8,7 @@ import {
   Content,
   BalanceContainer,
   HeaderTransactions,
+  TitleButton,
   Title,
   AddNewTransaction,
   ListContainer,
@@ -78,22 +79,9 @@ export default function Home({ navigation }) {
   // Filtra as transações em despesas e ganhos
   let totalGains = gainsCalculator(data);
   let totalExpenses = expensesCalculator(data);
-  let totalBalance = totalGains - totalExpenses;
-
-  if (loading) {
-    return (
-      <Container>
-        <MessageContainer>
-          <ActivityIndicator size="large" color={colors.primary} />
-          <Message>Carregando...</Message>
-        </MessageContainer>
-      </Container>
-    );
-  }
 
   return (
     <Container>
-      <Header />
       <ModalDelete
         visible={showModal}
         cancel={setShowModal}
@@ -109,7 +97,7 @@ export default function Home({ navigation }) {
           <AddNewTransaction
             onPress={() => navigation.navigate("AddTransaction")}
           >
-            <Title>Adicionar</Title>
+            <TitleButton>Adicionar</TitleButton>
           </AddNewTransaction>
         </HeaderTransactions>
 
@@ -118,6 +106,11 @@ export default function Home({ navigation }) {
           {data.length === 0 ? (
             <MessageContainer>
               <Message>Você não possui nenhuma transação</Message>
+            </MessageContainer>
+          ) : loading ? (
+            <MessageContainer>
+              <ActivityIndicator size="large" color={colors.primary} />
+              <Message>Carregando...</Message>
             </MessageContainer>
           ) : (
             <TransactionsList

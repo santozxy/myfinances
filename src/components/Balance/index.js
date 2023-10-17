@@ -2,12 +2,13 @@ import { useState } from "react";
 import {
   Container,
   Row,
-  Title,
+  TitleLabel,
   ContainerBalance,
   Content,
-  Symbol,
-  TextGains,
-  TextExpenses,
+  Icon,
+  Labels,
+  Gains,
+  ValueLabel,
 } from "./styles";
 import { MaterialCommunityIcons, AntDesign } from "@expo/vector-icons";
 import { useTheme } from "styled-components/native";
@@ -19,34 +20,36 @@ export default function Balance({ gains, expenses }) {
   return (
     <Container>
       <ContainerBalance>
-        <Title>Saldo</Title>
-        <Title>{balance}</Title>
+        <ValueLabel>{balance},00</ValueLabel>
+        <TitleLabel>Saldo atual</TitleLabel>
       </ContainerBalance>
+
       <Row>
         <Content>
-          <Title>Ganhos</Title>
-          <Symbol>
+          <Icon>
             <MaterialCommunityIcons
               name="arrow-up"
-              color={colors.primary}
+              color={colors.green}
               size={16}
             />
-            R$ <TextGains>{gains} </TextGains>
-          </Symbol>
+          </Icon>
+          <Labels>
+            <ValueLabel>R$ {gains} </ValueLabel>
+            <TitleLabel>Ganhos</TitleLabel>
+          </Labels>
         </Content>
         <Content>
-          <Title>Gastos</Title>
-          <Symbol>
-            R${" "}
-            <TextExpenses>
-              - {expenses}{" "}
-              <MaterialCommunityIcons
-                name="arrow-down"
-                color={colors.red}
-                size={16}
-              />
-            </TextExpenses>
-          </Symbol>
+          <Icon>
+            <MaterialCommunityIcons
+              name="arrow-down"
+              color={colors.red}
+              size={16}
+            />
+          </Icon>
+          <Labels>
+            <ValueLabel>R$ {expenses} </ValueLabel>
+            <TitleLabel>Gastos</TitleLabel>
+          </Labels>
         </Content>
       </Row>
     </Container>
